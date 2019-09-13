@@ -1,13 +1,11 @@
+import { userServiceInjectToken } from './modules/authModule/services/user.service';
+import { Inject } from '@angular/core';
 import { IUser } from './models/user.interface';
-import { AuthService } from './modules/authModule/services/auth.service';
-import { User } from './models/user.model';
 
 export class BaseClass
 {
-    public user: IUser;
-
-    constructor(protected authService: AuthService)
+    constructor(@Inject(userServiceInjectToken) public user: IUser)
     {
-        this.user = new User(authService);   
+           
     }
 }

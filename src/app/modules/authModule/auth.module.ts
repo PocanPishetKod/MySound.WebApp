@@ -1,21 +1,23 @@
 import { NgModule } from '@angular/core';
 import { AuthRoutingModule } from './auth-routing.module';
-import { AuthService } from './services/auth.service';
 import { LoginComponent } from './components/login/login.component';
-import { DatabaseService } from './services/database.service';
-import { TokenRepository } from './services/token-repository.service';
+import { IndexedDbModule } from '../indexedDbModule/indexed-db.module';
+import { AuthServicesModule } from './modules/authServicesModule/auth-services.module';
+import { MatButtonModule } from '@angular/material';
+import { MaterialModule } from 'src/app/material.module';
 
 @NgModule({
-    imports: [AuthRoutingModule],
+    imports: [
+        AuthRoutingModule,
+        IndexedDbModule,
+        AuthServicesModule,
+        MaterialModule
+    ],
     exports: [],
     declarations: [
         LoginComponent
     ],
-    providers: [
-        AuthService,
-        DatabaseService,
-        TokenRepository
-    ]
+    providers: []
 })
 export class AuthModule
 { 
